@@ -1,0 +1,4 @@
+faster-whisper==1.2.1
+piper-tts
+edge-tts
+gradio==5.49.1
