@@ -62,7 +62,7 @@ refuses out loud instead of guessing."""
 with gr.Blocks(title="VoiceLoop: Spoken Cited Answers",
                theme=gr.themes.Soft(primary_hue="indigo",
                                     neutral_hue="slate"),
-               css=".footer {display: none !important}") as demo:
+               css="footer {display: none !important} .footer {display: none !important}") as demo:
     gr.Markdown(HEADER)
     audio_in = gr.Audio(sources=["microphone", "upload"],
                         type="filepath", label="Your voice")
@@ -77,8 +77,8 @@ with gr.Blocks(title="VoiceLoop: Spoken Cited Answers",
                            datatype=["str", "str"],
                            label="Latency ledger", interactive=False)
     gr.Markdown("<small>Local and free: Whisper and the answer "
-                "pipeline run on CPU with open-weight models. Speech "
-                "synthesis uses the free Edge TTS voice.</small>")
+                "pipeline, and the Piper voice run on CPU with "
+                "open-weight models.</small>")
     ask_btn.click(ask, inputs=[audio_in, text_in],
                   outputs=[transcript, answer_md, audio_out, latency],
                   api_name="ask")
