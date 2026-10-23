@@ -24,10 +24,11 @@ def _fmt_answer(out):
                 "than guess, and said so out loud.")
     parts = ["**Answer, in the paper's own words:**", "",
              "> " + out["answer_text"], ""]
-    for cit in out["citations"][:3]:
-        parts.append("<small>Source: arXiv %s, page %s, match score "
-                     "%s</small>" % (cit["doc_id"], cit["page"],
-                                     round(cit["score"], 3)))
+    srcs = ["<small>Source: arXiv %s, page %s, match score %s</small>"
+            % (cit["doc_id"], cit["page"], round(cit["score"], 3))
+            for cit in out["citations"][:3]]
+    if srcs:
+        parts.append("<br>".join(srcs))
     return "\n".join(parts)
 
 
